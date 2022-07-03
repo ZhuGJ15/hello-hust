@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hust.hello.dao.mapper.HelloPostConfigMapper">
+  <resultMap id="BaseResultMap" type="com.hust.hello.common.model.entity.HelloPostConfig">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="post_id" jdbcType="VARCHAR" property="postId" />
+    <result column="bar_id" jdbcType="VARCHAR" property="barId" />
+    <result column="post_status" jdbcType="INTEGER" property="postStatus" />
+    <result column="post_type" jdbcType="INTEGER" property="postType" />
+    <result column="post_title" jdbcType="VARCHAR" property="postTitle" />
+    <result column="post_text" jdbcType="VARCHAR" property="postText" />
+    <result column="creator_id" jdbcType="VARCHAR" property="creatorId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="popularity" jdbcType="INTEGER" property="popularity" />
+    <result column="last_edit_time" jdbcType="TIMESTAMP" property="lastEditTime" />
+    <result column="view_sum" jdbcType="INTEGER" property="viewSum" />
+    <result column="like_sum" jdbcType="INTEGER" property="likeSum" />
+    <result column="collect_sum" jdbcType="INTEGER" property="collectSum" />
+    <result column="dislike_sum" jdbcType="INTEGER" property="dislikeSum" />
+    <result column="comment_sum" jdbcType="INTEGER" property="commentSum" />
+    <result column="report_sum" jdbcType="INTEGER" property="reportSum" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, post_id, bar_id, post_status, post_type, post_title, post_text, creator_id, create_time, 
+    popularity, last_edit_time, view_sum, like_sum, collect_sum, dislike_sum, comment_sum, 
+    report_sum, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hello_post_config
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from hello_post_config
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.hust.hello.common.model.entity.HelloPostConfig" useGeneratedKeys="true">
+    insert into hello_post_config (post_id, bar_id, post_status, 
+      post_type, post_title, post_text, 
+      creator_id, create_time, popularity, 
+      last_edit_time, view_sum, like_sum, 
+      collect_sum, dislike_sum, comment_sum, 
+      report_sum, version)
+    values (#{postId,jdbcType=VARCHAR}, #{barId,jdbcType=VARCHAR}, #{postStatus,jdbcType=INTEGER}, 
+      #{postType,jdbcType=INTEGER}, #{postTitle,jdbcType=VARCHAR}, #{postText,jdbcType=VARCHAR}, 
+      #{creatorId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{popularity,jdbcType=INTEGER}, 
+      #{lastEditTime,jdbcType=TIMESTAMP}, #{viewSum,jdbcType=INTEGER}, #{likeSum,jdbcType=INTEGER}, 
+      #{collectSum,jdbcType=INTEGER}, #{dislikeSum,jdbcType=INTEGER}, #{commentSum,jdbcType=INTEGER}, 
+      #{reportSum,jdbcType=INTEGER}, #{version,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.hust.hello.common.model.entity.HelloPostConfig" useGeneratedKeys="true">
+    insert into hello_post_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="postId != null">
+        post_id,
+      </if>
+      <if test="barId != null">
+        bar_id,
+      </if>
+      <if test="postStatus != null">
+        post_status,
+      </if>
+      <if test="postType != null">
+        post_type,
+      </if>
+      <if test="postTitle != null">
+        post_title,
+      </if>
+      <if test="postText != null">
+        post_text,
+      </if>
+      <if test="creatorId != null">
+        creator_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="popularity != null">
+        popularity,
+      </if>
+      <if test="lastEditTime != null">
+        last_edit_time,
+      </if>
+      <if test="viewSum != null">
+        view_sum,
+      </if>
+      <if test="likeSum != null">
+        like_sum,
+      </if>
+      <if test="collectSum != null">
+        collect_sum,
+      </if>
+      <if test="dislikeSum != null">
+        dislike_sum,
+      </if>
+      <if test="commentSum != null">
+        comment_sum,
+      </if>
+      <if test="reportSum != null">
+        report_sum,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="postId != null">
+        #{postId,jdbcType=VARCHAR},
+      </if>
+      <if test="barId != null">
+        #{barId,jdbcType=VARCHAR},
+      </if>
+      <if test="postStatus != null">
+        #{postStatus,jdbcType=INTEGER},
+      </if>
+      <if test="postType != null">
+        #{postType,jdbcType=INTEGER},
+      </if>
+      <if test="postTitle != null">
+        #{postTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="postText != null">
+        #{postText,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null">
+        #{creatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="popularity != null">
+        #{popularity,jdbcType=INTEGER},
+      </if>
+      <if test="lastEditTime != null">
+        #{lastEditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewSum != null">
+        #{viewSum,jdbcType=INTEGER},
+      </if>
+      <if test="likeSum != null">
+        #{likeSum,jdbcType=INTEGER},
+      </if>
+      <if test="collectSum != null">
+        #{collectSum,jdbcType=INTEGER},
+      </if>
+      <if test="dislikeSum != null">
+        #{dislikeSum,jdbcType=INTEGER},
+      </if>
+      <if test="commentSum != null">
+        #{commentSum,jdbcType=INTEGER},
+      </if>
+      <if test="reportSum != null">
+        #{reportSum,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hust.hello.common.model.entity.HelloPostConfig">
+    update hello_post_config
+    <set>
+      <if test="postId != null">
+        post_id = #{postId,jdbcType=VARCHAR},
+      </if>
+      <if test="barId != null">
+        bar_id = #{barId,jdbcType=VARCHAR},
+      </if>
+      <if test="postStatus != null">
+        post_status = #{postStatus,jdbcType=INTEGER},
+      </if>
+      <if test="postType != null">
+        post_type = #{postType,jdbcType=INTEGER},
+      </if>
+      <if test="postTitle != null">
+        post_title = #{postTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="postText != null">
+        post_text = #{postText,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null">
+        creator_id = #{creatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="popularity != null">
+        popularity = #{popularity,jdbcType=INTEGER},
+      </if>
+      <if test="lastEditTime != null">
+        last_edit_time = #{lastEditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewSum != null">
+        view_sum = #{viewSum,jdbcType=INTEGER},
+      </if>
+      <if test="likeSum != null">
+        like_sum = #{likeSum,jdbcType=INTEGER},
+      </if>
+      <if test="collectSum != null">
+        collect_sum = #{collectSum,jdbcType=INTEGER},
+      </if>
+      <if test="dislikeSum != null">
+        dislike_sum = #{dislikeSum,jdbcType=INTEGER},
+      </if>
+      <if test="commentSum != null">
+        comment_sum = #{commentSum,jdbcType=INTEGER},
+      </if>
+      <if test="reportSum != null">
+        report_sum = #{reportSum,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hust.hello.common.model.entity.HelloPostConfig">
+    update hello_post_config
+    set post_id = #{postId,jdbcType=VARCHAR},
+      bar_id = #{barId,jdbcType=VARCHAR},
+      post_status = #{postStatus,jdbcType=INTEGER},
+      post_type = #{postType,jdbcType=INTEGER},
+      post_title = #{postTitle,jdbcType=VARCHAR},
+      post_text = #{postText,jdbcType=VARCHAR},
+      creator_id = #{creatorId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      popularity = #{popularity,jdbcType=INTEGER},
+      last_edit_time = #{lastEditTime,jdbcType=TIMESTAMP},
+      view_sum = #{viewSum,jdbcType=INTEGER},
+      like_sum = #{likeSum,jdbcType=INTEGER},
+      collect_sum = #{collectSum,jdbcType=INTEGER},
+      dislike_sum = #{dislikeSum,jdbcType=INTEGER},
+      comment_sum = #{commentSum,jdbcType=INTEGER},
+      report_sum = #{reportSum,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <delete id="deleteWithVersionByPrimaryKey" parameterType="map">
+    delete from hello_post_config
+    where version = #{version,jdbcType=INTEGER}
+      and id = #{key,jdbcType=BIGINT}
+  </delete>
+  <update id="updateWithVersionByPrimaryKey" parameterType="map">
+    update hello_post_config
+    set version = version + 1,
+    post_id = #{record.postId,jdbcType=VARCHAR}, 
+    bar_id = #{record.barId,jdbcType=VARCHAR}, 
+    post_status = #{record.postStatus,jdbcType=INTEGER}, 
+    post_type = #{record.postType,jdbcType=INTEGER}, 
+    post_title = #{record.postTitle,jdbcType=VARCHAR}, 
+    post_text = #{record.postText,jdbcType=VARCHAR}, 
+    creator_id = #{record.creatorId,jdbcType=VARCHAR}, 
+    create_time = #{record.createTime,jdbcType=TIMESTAMP}, 
+    popularity = #{record.popularity,jdbcType=INTEGER}, 
+    last_edit_time = #{record.lastEditTime,jdbcType=TIMESTAMP}, 
+    view_sum = #{record.viewSum,jdbcType=INTEGER}, 
+    like_sum = #{record.likeSum,jdbcType=INTEGER}, 
+    collect_sum = #{record.collectSum,jdbcType=INTEGER}, 
+    dislike_sum = #{record.dislikeSum,jdbcType=INTEGER}, 
+    comment_sum = #{record.commentSum,jdbcType=INTEGER}, 
+    report_sum = #{record.reportSum,jdbcType=INTEGER}
+    where version = #{version,jdbcType=INTEGER}
+      and id = #{record.id,jdbcType=BIGINT}
+  </update>
+  <update id="updateWithVersionByPrimaryKeySelective" parameterType="map">
+    update hello_post_config
+    <set>
+      <trim suffixOverrides=",">
+        version = version + 1,
+        <if test="record.postId != null">
+          post_id = #{record.postId,jdbcType=VARCHAR},
+        </if>
+        <if test="record.barId != null">
+          bar_id = #{record.barId,jdbcType=VARCHAR},
+        </if>
+        <if test="record.postStatus != null">
+          post_status = #{record.postStatus,jdbcType=INTEGER},
+        </if>
+        <if test="record.postType != null">
+          post_type = #{record.postType,jdbcType=INTEGER},
+        </if>
+        <if test="record.postTitle != null">
+          post_title = #{record.postTitle,jdbcType=VARCHAR},
+        </if>
+        <if test="record.postText != null">
+          post_text = #{record.postText,jdbcType=VARCHAR},
+        </if>
+        <if test="record.creatorId != null">
+          creator_id = #{record.creatorId,jdbcType=VARCHAR},
+        </if>
+        <if test="record.createTime != null">
+          create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="record.popularity != null">
+          popularity = #{record.popularity,jdbcType=INTEGER},
+        </if>
+        <if test="record.lastEditTime != null">
+          last_edit_time = #{record.lastEditTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="record.viewSum != null">
+          view_sum = #{record.viewSum,jdbcType=INTEGER},
+        </if>
+        <if test="record.likeSum != null">
+          like_sum = #{record.likeSum,jdbcType=INTEGER},
+        </if>
+        <if test="record.collectSum != null">
+          collect_sum = #{record.collectSum,jdbcType=INTEGER},
+        </if>
+        <if test="record.dislikeSum != null">
+          dislike_sum = #{record.dislikeSum,jdbcType=INTEGER},
+        </if>
+        <if test="record.commentSum != null">
+          comment_sum = #{record.commentSum,jdbcType=INTEGER},
+        </if>
+        <if test="record.reportSum != null">
+          report_sum = #{record.reportSum,jdbcType=INTEGER},
+        </if>
+      </trim>
+    </set>
+    where version = #{version,jdbcType=INTEGER}
+      and id = #{record.id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hust.hello.dao.mapper.HelloBarConfigMapper">
+  <resultMap id="BaseResultMap" type="com.hust.hello.common.model.entity.HelloBarConfig">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="bar_id" jdbcType="VARCHAR" property="barId" />
+    <result column="bar_name" jdbcType="VARCHAR" property="barName" />
+    <result column="Introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="avatar_path" jdbcType="VARCHAR" property="avatarPath" />
+    <result column="bar_type" jdbcType="INTEGER" property="barType" />
+    <result column="bar_status" jdbcType="INTEGER" property="barStatus" />
+    <result column="follower_sum" jdbcType="INTEGER" property="followerSum" />
+    <result column="post_sum" jdbcType="INTEGER" property="postSum" />
+    <result column="popularity" jdbcType="INTEGER" property="popularity" />
+    <result column="bar_principal" jdbcType="VARCHAR" property="barPrincipal" />
+    <result column="bar_admin" jdbcType="VARCHAR" property="barAdmin" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creator_id" jdbcType="VARCHAR" property="creatorId" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, bar_id, bar_name, Introduction, avatar_path, bar_type, bar_status, follower_sum, 
+    post_sum, popularity, bar_principal, bar_admin, create_time, creator_id, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hello_bar_config
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from hello_bar_config
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.hust.hello.common.model.entity.HelloBarConfig" useGeneratedKeys="true">
+    insert into hello_bar_config (bar_id, bar_name, Introduction, 
+      avatar_path, bar_type, bar_status, 
+      follower_sum, post_sum, popularity, 
+      bar_principal, bar_admin, create_time, 
+      creator_id, version)
+    values (#{barId,jdbcType=VARCHAR}, #{barName,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
+      #{avatarPath,jdbcType=VARCHAR}, #{barType,jdbcType=INTEGER}, #{barStatus,jdbcType=INTEGER}, 
+      #{followerSum,jdbcType=INTEGER}, #{postSum,jdbcType=INTEGER}, #{popularity,jdbcType=INTEGER}, 
+      #{barPrincipal,jdbcType=VARCHAR}, #{barAdmin,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{creatorId,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.hust.hello.common.model.entity.HelloBarConfig" useGeneratedKeys="true">
+    insert into hello_bar_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="barId != null">
+        bar_id,
+      </if>
+      <if test="barName != null">
+        bar_name,
+      </if>
+      <if test="introduction != null">
+        Introduction,
+      </if>
+      <if test="avatarPath != null">
+        avatar_path,
+      </if>
+      <if test="barType != null">
+        bar_type,
+      </if>
+      <if test="barStatus != null">
+        bar_status,
+      </if>
+      <if test="followerSum != null">
+        follower_sum,
+      </if>
+      <if test="postSum != null">
+        post_sum,
+      </if>
+      <if test="popularity != null">
+        popularity,
+      </if>
+      <if test="barPrincipal != null">
+        bar_principal,
+      </if>
+      <if test="barAdmin != null">
+        bar_admin,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="creatorId != null">
+        creator_id,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="barId != null">
+        #{barId,jdbcType=VARCHAR},
+      </if>
+      <if test="barName != null">
+        #{barName,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarPath != null">
+        #{avatarPath,jdbcType=VARCHAR},
+      </if>
+      <if test="barType != null">
+        #{barType,jdbcType=INTEGER},
+      </if>
+      <if test="barStatus != null">
+        #{barStatus,jdbcType=INTEGER},
+      </if>
+      <if test="followerSum != null">
+        #{followerSum,jdbcType=INTEGER},
+      </if>
+      <if test="postSum != null">
+        #{postSum,jdbcType=INTEGER},
+      </if>
+      <if test="popularity != null">
+        #{popularity,jdbcType=INTEGER},
+      </if>
+      <if test="barPrincipal != null">
+        #{barPrincipal,jdbcType=VARCHAR},
+      </if>
+      <if test="barAdmin != null">
+        #{barAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorId != null">
+        #{creatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hust.hello.common.model.entity.HelloBarConfig">
+    update hello_bar_config
+    <set>
+      <if test="barId != null">
+        bar_id = #{barId,jdbcType=VARCHAR},
+      </if>
+      <if test="barName != null">
+        bar_name = #{barName,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        Introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarPath != null">
+        avatar_path = #{avatarPath,jdbcType=VARCHAR},
+      </if>
+      <if test="barType != null">
+        bar_type = #{barType,jdbcType=INTEGER},
+      </if>
+      <if test="barStatus != null">
+        bar_status = #{barStatus,jdbcType=INTEGER},
+      </if>
+      <if test="followerSum != null">
+        follower_sum = #{followerSum,jdbcType=INTEGER},
+      </if>
+      <if test="postSum != null">
+        post_sum = #{postSum,jdbcType=INTEGER},
+      </if>
+      <if test="popularity != null">
+        popularity = #{popularity,jdbcType=INTEGER},
+      </if>
+      <if test="barPrincipal != null">
+        bar_principal = #{barPrincipal,jdbcType=VARCHAR},
+      </if>
+      <if test="barAdmin != null">
+        bar_admin = #{barAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorId != null">
+        creator_id = #{creatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hust.hello.common.model.entity.HelloBarConfig">
+    update hello_bar_config
+    set bar_id = #{barId,jdbcType=VARCHAR},
+      bar_name = #{barName,jdbcType=VARCHAR},
+      Introduction = #{introduction,jdbcType=VARCHAR},
+      avatar_path = #{avatarPath,jdbcType=VARCHAR},
+      bar_type = #{barType,jdbcType=INTEGER},
+      bar_status = #{barStatus,jdbcType=INTEGER},
+      follower_sum = #{followerSum,jdbcType=INTEGER},
+      post_sum = #{postSum,jdbcType=INTEGER},
+      popularity = #{popularity,jdbcType=INTEGER},
+      bar_principal = #{barPrincipal,jdbcType=VARCHAR},
+      bar_admin = #{barAdmin,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      creator_id = #{creatorId,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <delete id="deleteWithVersionByPrimaryKey" parameterType="map">
+    delete from hello_bar_config
+    where version = #{version,jdbcType=INTEGER}
+      and id = #{key,jdbcType=BIGINT}
+  </delete>
+  <update id="updateWithVersionByPrimaryKey" parameterType="map">
+    update hello_bar_config
+    set version = version + 1,
+    bar_id = #{record.barId,jdbcType=VARCHAR}, 
+    bar_name = #{record.barName,jdbcType=VARCHAR}, 
+    Introduction = #{record.introduction,jdbcType=VARCHAR}, 
+    avatar_path = #{record.avatarPath,jdbcType=VARCHAR}, 
+    bar_type = #{record.barType,jdbcType=INTEGER}, 
+    bar_status = #{record.barStatus,jdbcType=INTEGER}, 
+    follower_sum = #{record.followerSum,jdbcType=INTEGER}, 
+    post_sum = #{record.postSum,jdbcType=INTEGER}, 
+    popularity = #{record.popularity,jdbcType=INTEGER}, 
+    bar_principal = #{record.barPrincipal,jdbcType=VARCHAR}, 
+    bar_admin = #{record.barAdmin,jdbcType=VARCHAR}, 
+    create_time = #{record.createTime,jdbcType=TIMESTAMP}, 
+    creator_id = #{record.creatorId,jdbcType=VARCHAR}
+    where version = #{version,jdbcType=INTEGER}
+      and id = #{record.id,jdbcType=BIGINT}
+  </update>
+  <update id="updateWithVersionByPrimaryKeySelective" parameterType="map">
+    update hello_bar_config
+    <set>
+      <trim suffixOverrides=",">
+        version = version + 1,
+        <if test="record.barId != null">
+          bar_id = #{record.barId,jdbcType=VARCHAR},
+        </if>
+        <if test="record.barName != null">
+          bar_name = #{record.barName,jdbcType=VARCHAR},
+        </if>
+        <if test="record.introduction != null">
+          Introduction = #{record.introduction,jdbcType=VARCHAR},
+        </if>
+        <if test="record.avatarPath != null">
+          avatar_path = #{record.avatarPath,jdbcType=VARCHAR},
+        </if>
+        <if test="record.barType != null">
+          bar_type = #{record.barType,jdbcType=INTEGER},
+        </if>
+        <if test="record.barStatus != null">
+          bar_status = #{record.barStatus,jdbcType=INTEGER},
+        </if>
+        <if test="record.followerSum != null">
+          follower_sum = #{record.followerSum,jdbcType=INTEGER},
+        </if>
+        <if test="record.postSum != null">
+          post_sum = #{record.postSum,jdbcType=INTEGER},
+        </if>
+        <if test="record.popularity != null">
+          popularity = #{record.popularity,jdbcType=INTEGER},
+        </if>
+        <if test="record.barPrincipal != null">
+          bar_principal = #{record.barPrincipal,jdbcType=VARCHAR},
+        </if>
+        <if test="record.barAdmin != null">
+          bar_admin = #{record.barAdmin,jdbcType=VARCHAR},
+        </if>
+        <if test="record.createTime != null">
+          create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="record.creatorId != null">
+          creator_id = #{record.creatorId,jdbcType=VARCHAR},
+        </if>
+      </trim>
+    </set>
+    where version = #{version,jdbcType=INTEGER}
+      and id = #{record.id,jdbcType=BIGINT}
+  </update>
+</mapper>

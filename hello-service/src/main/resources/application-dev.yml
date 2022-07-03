@@ -1,0 +1,60 @@
+server:
+  port: 8090
+  max-http-header-size: 50000
+
+spring:
+  # mysql配置
+  datasource:
+    url: jdbc:mysql://182.61.12.151:3306/hello_hust?serverTimezone=UTC&autoReconnect=true&allowMultiQueries=true&connectTimeout=60000&socketTimeout=60000&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&characterSetResults=utf8&useSSL=false
+    username: root
+    password: ZhuGJ1115
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5  # 连接池的初始大小，项目启动时，自动创建的连接数量
+      min-idle: 6       # 连接池最少连接数量
+      max-active: 50   # 最大活跃连接数（默认100）
+
+      max-wait: 10000   # 获取连接池中的连接时最大等待时间
+      time-between-eviction-runs-millis: 5000      # 多久检查一次连接是否空闲（默认5000）
+      min-evictable-idle-time-millis: 30000   # 连接空闲的最大时间（最少30000)
+
+      validation-query: SELECT 1      # 用来校验连接是否有效的查询语句 （默认false，若该项未配置，则下列校验配置都不会生效）
+      test-while-idle: true     # 是否在连接空闲时进行校验（默认false）
+      test-on-borrow: false     # 是否在获取连接时校验，这个配置会降低性能（默认false)
+      test-on-return: false     # 是否在归还连接时校验，这个配置会降低性能
+      validation-query-timeout: 10  # 校验连接是否有效的超时时间（单位秒）
+
+      remove-abandoned: true    # 开启连接池回收
+      remove-abandoned-timeout: 180   # 超时连接回收时间，单位秒
+
+#  redis:
+#    database: 0     # Redis数据库索引（默认为0），如果设置为1，那么存入的key-value都存放在select 1中
+#    host: localhost
+#    port: 6379
+#    password: ZhuGJ1115
+#    timeout: 1000   # 连接超时时间（毫秒）
+#    jedis:
+#      pool:
+#        max-active: 5     # 连接池最大连接数（使用负值表示没有限制）
+#        max-wait: 2000    # 连接池最大阻塞等待时间
+#        max-idle: 2       # 最大空闲连接数量
+#        min-idle: 0       # 最小空闲连接数量
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 15MB
+
+# 自定义 email 配置
+email:
+  from: hust_hello@163.com              # 发送邮箱
+  testEmailTo: 1547265826@qq.com        # 测试接收邮箱
+  testAlertEmailTo: 1547265826@qq.com   # 报警信息接收邮箱
+
+projectUrl:
+  backend: www.zhugj1998.xyz
+
+manager:
+  name: admin_zhuganjun

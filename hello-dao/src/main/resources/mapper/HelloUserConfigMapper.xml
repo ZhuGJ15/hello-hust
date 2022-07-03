@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hust.hello.dao.mapper.HelloUserConfigMapper">
+  <resultMap id="BaseResultMap" type="com.hust.hello.common.model.entity.HelloUserConfig">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="student_id" jdbcType="VARCHAR" property="studentId" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="sex" jdbcType="TINYINT" property="sex" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="avatar_path" jdbcType="VARCHAR" property="avatarPath" />
+    <result column="account_status" jdbcType="TINYINT" property="accountStatus" />
+    <result column="account_class" jdbcType="INTEGER" property="accountClass" />
+    <result column="account_score" jdbcType="INTEGER" property="accountScore" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="sign_in_days" jdbcType="INTEGER" property="signInDays" />
+    <result column="registration_time" jdbcType="TIMESTAMP" property="registrationTime" />
+    <result column="following_userSum" jdbcType="INTEGER" property="followingUsersum" />
+    <result column="following_barSum" jdbcType="INTEGER" property="followingBarsum" />
+    <result column="post_sum" jdbcType="INTEGER" property="postSum" />
+    <result column="follower_sum" jdbcType="INTEGER" property="followerSum" />
+    <result column="show_sex" jdbcType="INTEGER" property="showSex" />
+    <result column="show_constellation" jdbcType="INTEGER" property="showConstellation" />
+    <result column="reported_sum" jdbcType="INTEGER" property="reportedSum" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, user_name, student_id, password, email, sex, birthday, avatar_path, 
+    account_status, account_class, account_score, last_login_time, sign_in_days, registration_time, 
+    following_userSum, following_barSum, post_sum, follower_sum, show_sex, show_constellation, 
+    reported_sum, version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hello_user_config
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from hello_user_config
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.hust.hello.common.model.entity.HelloUserConfig" useGeneratedKeys="true">
+    insert into hello_user_config (user_id, user_name, student_id, 
+      password, email, sex, 
+      birthday, avatar_path, account_status, 
+      account_class, account_score, last_login_time, 
+      sign_in_days, registration_time, following_userSum, 
+      following_barSum, post_sum, follower_sum, 
+      show_sex, show_constellation, reported_sum, 
+      version)
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{studentId,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, 
+      #{birthday,jdbcType=DATE}, #{avatarPath,jdbcType=VARCHAR}, #{accountStatus,jdbcType=TINYINT}, 
+      #{accountClass,jdbcType=INTEGER}, #{accountScore,jdbcType=INTEGER}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{signInDays,jdbcType=INTEGER}, #{registrationTime,jdbcType=TIMESTAMP}, #{followingUsersum,jdbcType=INTEGER}, 
+      #{followingBarsum,jdbcType=INTEGER}, #{postSum,jdbcType=INTEGER}, #{followerSum,jdbcType=INTEGER}, 
+      #{showSex,jdbcType=INTEGER}, #{showConstellation,jdbcType=INTEGER}, #{reportedSum,jdbcType=INTEGER}, 
+      #{version,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.hust.hello.common.model.entity.HelloUserConfig" useGeneratedKeys="true">
+    insert into hello_user_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="studentId != null">
+        student_id,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="avatarPath != null">
+        avatar_path,
+      </if>
+      <if test="accountStatus != null">
+        account_status,
+      </if>
+      <if test="accountClass != null">
+        account_class,
+      </if>
+      <if test="accountScore != null">
+        account_score,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="signInDays != null">
+        sign_in_days,
+      </if>
+      <if test="registrationTime != null">
+        registration_time,
+      </if>
+      <if test="followingUsersum != null">
+        following_userSum,
+      </if>
+      <if test="followingBarsum != null">
+        following_barSum,
+      </if>
+      <if test="postSum != null">
+        post_sum,
+      </if>
+      <if test="followerSum != null">
+        follower_sum,
+      </if>
+      <if test="showSex != null">
+        show_sex,
+      </if>
+      <if test="showConstellation != null">
+        show_constellation,
+      </if>
+      <if test="reportedSum != null">
+        reported_sum,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null">
+        #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="avatarPath != null">
+        #{avatarPath,jdbcType=VARCHAR},
+      </if>
+      <if test="accountStatus != null">
+        #{accountStatus,jdbcType=TINYINT},
+      </if>
+      <if test="accountClass != null">
+        #{accountClass,jdbcType=INTEGER},
+      </if>
+      <if test="accountScore != null">
+        #{accountScore,jdbcType=INTEGER},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signInDays != null">
+        #{signInDays,jdbcType=INTEGER},
+      </if>
+      <if test="registrationTime != null">
+        #{registrationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="followingUsersum != null">
+        #{followingUsersum,jdbcType=INTEGER},
+      </if>
+      <if test="followingBarsum != null">
+        #{followingBarsum,jdbcType=INTEGER},
+      </if>
+      <if test="postSum != null">
+        #{postSum,jdbcType=INTEGER},
+      </if>
+      <if test="followerSum != null">
+        #{followerSum,jdbcType=INTEGER},
+      </if>
+      <if test="showSex != null">
+        #{showSex,jdbcType=INTEGER},
+      </if>
+      <if test="showConstellation != null">
+        #{showConstellation,jdbcType=INTEGER},
+      </if>
+      <if test="reportedSum != null">
+        #{reportedSum,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hust.hello.common.model.entity.HelloUserConfig">
+    update hello_user_config
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentId != null">
+        student_id = #{studentId,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="avatarPath != null">
+        avatar_path = #{avatarPath,jdbcType=VARCHAR},
+      </if>
+      <if test="accountStatus != null">
+        account_status = #{accountStatus,jdbcType=TINYINT},
+      </if>
+      <if test="accountClass != null">
+        account_class = #{accountClass,jdbcType=INTEGER},
+      </if>
+      <if test="accountScore != null">
+        account_score = #{accountScore,jdbcType=INTEGER},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signInDays != null">
+        sign_in_days = #{signInDays,jdbcType=INTEGER},
+      </if>
+      <if test="registrationTime != null">
+        registration_time = #{registrationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="followingUsersum != null">
+        following_userSum = #{followingUsersum,jdbcType=INTEGER},
+      </if>
+      <if test="followingBarsum != null">
+        following_barSum = #{followingBarsum,jdbcType=INTEGER},
+      </if>
+      <if test="postSum != null">
+        post_sum = #{postSum,jdbcType=INTEGER},
+      </if>
+      <if test="followerSum != null">
+        follower_sum = #{followerSum,jdbcType=INTEGER},
+      </if>
+      <if test="showSex != null">
+        show_sex = #{showSex,jdbcType=INTEGER},
+      </if>
+      <if test="showConstellation != null">
+        show_constellation = #{showConstellation,jdbcType=INTEGER},
+      </if>
+      <if test="reportedSum != null">
+        reported_sum = #{reportedSum,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hust.hello.common.model.entity.HelloUserConfig">
+    update hello_user_config
+    set user_id = #{userId,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      student_id = #{studentId,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      birthday = #{birthday,jdbcType=DATE},
+      avatar_path = #{avatarPath,jdbcType=VARCHAR},
+      account_status = #{accountStatus,jdbcType=TINYINT},
+      account_class = #{accountClass,jdbcType=INTEGER},
+      account_score = #{accountScore,jdbcType=INTEGER},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      sign_in_days = #{signInDays,jdbcType=INTEGER},
+      registration_time = #{registrationTime,jdbcType=TIMESTAMP},
+      following_userSum = #{followingUsersum,jdbcType=INTEGER},
+      following_barSum = #{followingBarsum,jdbcType=INTEGER},
+      post_sum = #{postSum,jdbcType=INTEGER},
+      follower_sum = #{followerSum,jdbcType=INTEGER},
+      show_sex = #{showSex,jdbcType=INTEGER},
+      show_constellation = #{showConstellation,jdbcType=INTEGER},
+      reported_sum = #{reportedSum,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <delete id="deleteWithVersionByPrimaryKey" parameterType="map">
+    delete from hello_user_config
+    where version = #{version,jdbcType=INTEGER}
+      and id = #{key,jdbcType=BIGINT}
+  </delete>
+  <update id="updateWithVersionByPrimaryKey" parameterType="map">
+    update hello_user_config
+    set version = version + 1,
+    user_id = #{record.userId,jdbcType=VARCHAR}, 
+    user_name = #{record.userName,jdbcType=VARCHAR}, 
+    student_id = #{record.studentId,jdbcType=VARCHAR}, 
+    password = #{record.password,jdbcType=VARCHAR}, 
+    email = #{record.email,jdbcType=VARCHAR}, 
+    sex = #{record.sex,jdbcType=TINYINT}, 
+    birthday = #{record.birthday,jdbcType=DATE}, 
+    avatar_path = #{record.avatarPath,jdbcType=VARCHAR}, 
+    account_status = #{record.accountStatus,jdbcType=TINYINT}, 
+    account_class = #{record.accountClass,jdbcType=INTEGER}, 
+    account_score = #{record.accountScore,jdbcType=INTEGER}, 
+    last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP}, 
+    sign_in_days = #{record.signInDays,jdbcType=INTEGER}, 
+    registration_time = #{record.registrationTime,jdbcType=TIMESTAMP}, 
+    following_userSum = #{record.followingUsersum,jdbcType=INTEGER}, 
+    following_barSum = #{record.followingBarsum,jdbcType=INTEGER}, 
+    post_sum = #{record.postSum,jdbcType=INTEGER}, 
+    follower_sum = #{record.followerSum,jdbcType=INTEGER}, 
+    show_sex = #{record.showSex,jdbcType=INTEGER}, 
+    show_constellation = #{record.showConstellation,jdbcType=INTEGER}, 
+    reported_sum = #{record.reportedSum,jdbcType=INTEGER}
+    where version = #{version,jdbcType=INTEGER}
+      and id = #{record.id,jdbcType=BIGINT}
+  </update>
+  <update id="updateWithVersionByPrimaryKeySelective" parameterType="map">
+    update hello_user_config
+    <set>
+      <trim suffixOverrides=",">
+        version = version + 1,
+        <if test="record.userId != null">
+          user_id = #{record.userId,jdbcType=VARCHAR},
+        </if>
+        <if test="record.userName != null">
+          user_name = #{record.userName,jdbcType=VARCHAR},
+        </if>
+        <if test="record.studentId != null">
+          student_id = #{record.studentId,jdbcType=VARCHAR},
+        </if>
+        <if test="record.password != null">
+          password = #{record.password,jdbcType=VARCHAR},
+        </if>
+        <if test="record.email != null">
+          email = #{record.email,jdbcType=VARCHAR},
+        </if>
+        <if test="record.sex != null">
+          sex = #{record.sex,jdbcType=TINYINT},
+        </if>
+        <if test="record.birthday != null">
+          birthday = #{record.birthday,jdbcType=DATE},
+        </if>
+        <if test="record.avatarPath != null">
+          avatar_path = #{record.avatarPath,jdbcType=VARCHAR},
+        </if>
+        <if test="record.accountStatus != null">
+          account_status = #{record.accountStatus,jdbcType=TINYINT},
+        </if>
+        <if test="record.accountClass != null">
+          account_class = #{record.accountClass,jdbcType=INTEGER},
+        </if>
+        <if test="record.accountScore != null">
+          account_score = #{record.accountScore,jdbcType=INTEGER},
+        </if>
+        <if test="record.lastLoginTime != null">
+          last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="record.signInDays != null">
+          sign_in_days = #{record.signInDays,jdbcType=INTEGER},
+        </if>
+        <if test="record.registrationTime != null">
+          registration_time = #{record.registrationTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="record.followingUsersum != null">
+          following_userSum = #{record.followingUsersum,jdbcType=INTEGER},
+        </if>
+        <if test="record.followingBarsum != null">
+          following_barSum = #{record.followingBarsum,jdbcType=INTEGER},
+        </if>
+        <if test="record.postSum != null">
+          post_sum = #{record.postSum,jdbcType=INTEGER},
+        </if>
+        <if test="record.followerSum != null">
+          follower_sum = #{record.followerSum,jdbcType=INTEGER},
+        </if>
+        <if test="record.showSex != null">
+          show_sex = #{record.showSex,jdbcType=INTEGER},
+        </if>
+        <if test="record.showConstellation != null">
+          show_constellation = #{record.showConstellation,jdbcType=INTEGER},
+        </if>
+        <if test="record.reportedSum != null">
+          reported_sum = #{record.reportedSum,jdbcType=INTEGER},
+        </if>
+      </trim>
+    </set>
+    where version = #{version,jdbcType=INTEGER}
+      and id = #{record.id,jdbcType=BIGINT}
+  </update>
+</mapper>

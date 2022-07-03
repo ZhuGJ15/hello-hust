@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!-- 设置mybatis日志类型 -->
+        <setting name="logImpl" value="LOG4J2"/>
+        <!-- <setting name="logImpl" value="STDOUT_LOGGING"/> -->
+        <!-- 配置缓存的全局开关 -->
+        <setting name="cacheEnabled" value="true"/>
+        <!-- 延迟加载的全局开关。开启后，所有关联对象都会延迟加载
+            特定关联关系可以通过设置fetchType属性来覆盖该项的开关状态 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 当没有为参数提供特定 JDBC 类型时，为空值提供 JDBC 类型。
+            某些驱动需要指定列的 JDBC 类型，多数情况下直接用一般类型即可，如 NULL、VARCHAR或OTHER -->
+        <setting name="jdbcTypeForNull" value="NULL"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        
+    </settings>
+</configuration>
