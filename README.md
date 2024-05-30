@@ -1,2 +1,2 @@
 # hust-hello
-Forum project with separation of front and back ends
+校园论坛后端
